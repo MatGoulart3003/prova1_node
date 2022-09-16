@@ -15,7 +15,7 @@ const remove = (elementId) => {
     movies.splice(i,1)
 }
 const getById = (elementId) => {
-    const i = subjects.findIndex(ele => ele.id == elementId)
+    const i = movies.findIndex(ele => ele.id == elementId)
     let eleSearched = movies[i]
     return eleSearched
 

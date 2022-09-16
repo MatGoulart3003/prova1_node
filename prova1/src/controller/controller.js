@@ -7,7 +7,7 @@ const getById = (req,res) => {
     if(!validId(req.params.id)){        
         return res.status(404).send("Filme não encontrado")
     }
-    res.status(200).send(service.getOne(req.params.id))
+    res.status(200).send(service.getById(req.params.id))
 }
 
 const create = (req,res) => {
