@@ -1,25 +1,44 @@
 const service = require('../service/service')
-const mensagemErro = 'Error request'
 
 const getAll = (req,res) => {
-    res.send(service.getAll())
+    res.status(200).send(service.getAll())
 }
+const getById = (req,res) => {
+    if(!validId(req.params.id)){        
+        return res.status(404).send("Filme não encontrado")
+    }
+    res.status(200).send(service.getOne(req.params.id))
+}
+
 const create = (req,res) => {
     service.create(req.body)
-    res.send("Imóvel criado com sucesso")
+    res.send("Filme criado com sucesso")
 }
 const update = (req,res) => {
     service.update(req.params.id, req.body)
-    res.send("Imóvel atualizado com sucesso")
+    res.send("Filme atualizado com sucesso")
 }
 const remove = (req,res) => {
     service.remove(req.params.id)    
-    res.send("Imóvel removido com sucesso")
+    res.send("Filme removido com sucesso")
+}
+
+const validId = (elementId) => {
+    let movies = []
+    let isValid = true
+    movies = service.getAll()
+    const i = movies.findIndex (ele => ele.id == elementId)
+    if (i === -1){
+        isValid = false
+        return isValid
+    }
+    return isValid
 }
 
 module.exports={
     getAll,
     create,
     update,
-    remove
+    remove,
+    getById
 }

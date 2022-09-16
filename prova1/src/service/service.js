@@ -1,23 +1,29 @@
-const array = []
+const movies = []
 
 const getAll = () => {
-    return array
+    return movies
 }
 const create = (subject) => {
-    array.push(subject)
+    movies.push(subject)
 }
 const update = (elementId, element) =>{
-    const i = array.findIndex(ele => ele.id == elementId)
-    array[i] = element
+    const i = movies.findIndex(ele => ele.id == elementId)
+    movies[i] = element
 }
 const remove = (elementId) => {
-    const i = array.findIndex(ele => ele.id == elementId)
-    array.splice(i,1)
+    const i = movies.findIndex(ele => ele.id == elementId)
+    movies.splice(i,1)
 }
+const getById = (elementId) => {
+    const i = subjects.findIndex(ele => ele.id == elementId)
+    let eleSearched = movies[i]
+    return eleSearched
 
+}
 module.exports = {
     getAll,
     create,
     update,
-    remove    
+    remove,
+    getById    
 }
