@@ -19,8 +19,11 @@ const update = (req,res) => {
     res.send("Filme atualizado com sucesso")
 }
 const remove = (req,res) => {
+    if(!validId(req.params.id)){        
+        return res.status(404).send("Filme não encontrado")
+    }
     service.remove(req.params.id)    
-    res.send("Filme removido com sucesso")
+    res.status(204)
 }
 
 const validId = (elementId) => {
