@@ -3,8 +3,8 @@ const movies = []
 const getAll = () => {
     return movies
 }
-const create = (subject) => {
-    movies.push(subject)
+const create = (movie) => {
+    movies.push(movie)
 }
 const update = (elementId, element) =>{
     const i = movies.findIndex(ele => ele.id == elementId)
